@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Worldle </title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>  
+</head>
+
+<body onload = "openPopup()">
+        <!-- how to play screen-->
+        <div id= "howToPlayScreen" class="popup">
+            <div class = "popup-content">
+                <h2> Welcome to Worldle! </h2>
+                <p> Here is how to play : </p>
+                <ul>
+                    <li> Guess the country based of the image shown on the screen. </li>
+                    <li> If you can't guess the country with the first image you can request another. </li>
+                    <li> But beware! You will lose points for every new image requested. </li>
+                    <li> If you think you know the answer, pinpoint on the map your guess. </li>
+                    <li> Complete all three rounds, you win! </li>
+                </ul>
+                <button class = "start-button" onclick="closePopupAndStartGame()">Start</button>
+            </div> 
+        </div>
+    <div id = "lives: ">Lives: <span id = "Lives"> ❤️❤️❤️</span><div>
+    <!-- Main container for the game -->
+    <div class="container">
+        <!-- Game title and score -->
+        <div class="game-title">Worldle</div>
+        <div id="score-container">Score: <span id="score">0</span></div>
+        
+
+        <!-- Image boxes -->
+        <div class="image-section">
+            <!-- First box automatically shows the first image -->
+            <div class="image-box" id="box1">
+                <img id="image1" src="" alt="Cultural Item 1">
+            </div>
+
+            <!-- Second and third boxes with reveal buttons -->
+            <div class="image-box" id="box2">
+                <img id="image2" src="images/questionMark.jpeg" alt="Cultural Item 2">
+                <button class="reveal-button" onclick="revealImage(1)">Reveal</button>
+            </div>
+            <div class="image-box" id="box3">
+                <img id="image3" src="images/questionMark.jpeg" alt="Cultural Item 3">
+                <button id="button2" class="reveal-button" onclick="revealImage(2)">Reveal</button> <!-- 'disabled' instead of 'disable' -->
+            </div>
+        
+        </div>
+       <button id="confirmButton" class ="confirm-button" onclick="confirmGuess()">Confirm</button>
+       <!-- <button id="button1" class="button disabled" onclick="enableNextButton('button2')">Button1 </button>
+        <button id="button2" class="button disabled" onclick="enableNextButton('button3')" disabled>Button2</button>
+        <button id="button3" class="button disabled" disabled>Button3</button>-->
+
+        <!-- Popup for Result -->
+    <div id="resultPopup" class="popup2" style="display: none;">
+        <div class="popup-content2">
+            <h2 id="resultMessage">Result</h2>
+            <button id="againButton" class="again-button" onclick="closeResultPopup()">Again?</button>
+        </div>
+    </div>
+
+        <!-- Map container for guessing -->
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+        
+        
+    </div>
+
+       
+    <script src="actions.js"></script>
+</body>
+
+</html>
